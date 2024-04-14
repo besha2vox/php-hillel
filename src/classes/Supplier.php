@@ -5,7 +5,8 @@ class Supplier
     private string $name;
     private array $products = [];
 
-    public function __construct(string $name) {
+    public function __construct(string $name)
+    {
         $this->name = $name;
     }
 
@@ -14,7 +15,8 @@ class Supplier
         $this->products[] = $product;
     }
 
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 

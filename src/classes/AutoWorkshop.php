@@ -4,7 +4,6 @@ class AutoWorkshop
 {
     private array $workers;
 
-
     public function __construct(private string $name, private array $priceList)
     {
         $this->name = $name;

@@ -1,6 +1,7 @@
 <?php
 
-class Mechanic extends Worker {
+class Mechanic extends Worker
+{
     private Car|null $car = null;
 
     public function getCarForService(Car $car): void
@@ -30,7 +31,7 @@ class Mechanic extends Worker {
 
     private function checkCarInService(): void
     {
-        if(!$this->car){
+        if (!$this->car) {
             throw new Exception("No car in service\n");
         }
     }

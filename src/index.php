@@ -17,6 +17,7 @@ try {
     $supplier = new Supplier("Auto Parts Supplier");
     $engine = new Product("Engine", 1000.0);
     $tire = new Product("Tire", 200.0);
+
     $supplier->addProduct($engine);
     $supplier->addProduct($tire);
 

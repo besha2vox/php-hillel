@@ -1,7 +1,7 @@
 <?php
 
-class CarOwner {
-
+class CarOwner
+{
     public function __construct(private string $name, private float $balance, private Car $car)
     {
         $this->name = $name;
@@ -9,21 +9,23 @@ class CarOwner {
         $this->car = $car;
     }
 
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
-
 
     public function getCar(): Car
     {
         return $this->car;
     }
 
-    public function getBalance(): float {
+    public function getBalance(): float
+    {
         return $this->balance;
     }
 
-    public function deductBalance(float $amount): void {
+    public function deductBalance(float $amount): void
+    {
         $this->balance -= $amount;
     }
 }

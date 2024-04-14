@@ -1,7 +1,9 @@
 <?php
 
-class Cashier extends Worker {
+class Cashier extends Worker
+{
     private bool $isOrderCreated = false;
+
     public function createOrder(CarOwner $carOwner, Product $product, float $amount): Order
     {
         if ($carOwner->getBalance() < $amount) {
@@ -14,9 +16,10 @@ class Cashier extends Worker {
 
         return $order;
     }
+
     public function processPayment(Order $order): void
     {
-        if(!$this->isOrderCreated) {
+        if (!$this->isOrderCreated) {
             throw new Exception("Order has not been created\n");
         }
         $payment = new Payment($order);

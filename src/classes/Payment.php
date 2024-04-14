@@ -1,13 +1,16 @@
 <?php
 
-class Payment {
+class Payment
+{
     private Order $order;
 
-    public function __construct(Order $order) {
+    public function __construct(Order $order)
+    {
         $this->order = $order;
     }
 
-    public function processPayment(): void {
+    public function processPayment(): void
+    {
         $carOwner = $this->order->getCarOwner();
         $totalPrice = $this->order->getTotalPrice();
         $carOwner->deductBalance($totalPrice);
@@ -15,7 +18,8 @@ class Payment {
         $this->generateReceipt();
     }
 
-    private function generateReceipt(): void {
+    private function generateReceipt(): void
+    {
         $carOwner = $this->order->getCarOwner();
         $car = $this->order->getCar();
         $products = $this->order->getProducts();
