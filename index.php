@@ -28,7 +28,7 @@ try {
     $autoWorkshop->hireWorker($mechanic);
     $autoWorkshop->hireWorker($cashier);
 
-    $car = new Car("Toyota", "Corolla", "Engine");
+    $car = new Car("Toyota", "Corolla", "Tire");
     $carOwner = new CarOwner("Bob", 2500.0, $car);
 
     $mechanic->greetings();
@@ -55,5 +55,7 @@ try {
 } catch (CashierException $error) {
     echo $error->getMessage() . "\n";
 } catch (SupplierException $error) {
+    echo $error->getMessage() . "\n";
+} catch (TypeError $error) {
     echo $error->getMessage() . "\n";
 }

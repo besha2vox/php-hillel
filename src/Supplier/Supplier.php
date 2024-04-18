@@ -32,12 +32,19 @@ class Supplier
     public function getProduct(string $productName): Product
     {
         $products = $this->getProducts();
-        $index = array_search($productName, array_column($products, 'name'));
-        $product = $products[$index];
-
-        if(!$product) {
+        $index = null;
+        foreach ($products as $key => $product) {
+            if ($product->getName() === $productName) {
+                $index = $key;
+                break;
+            }
+        }
+        if(!isset($index)) {
             throw new SupplierException($productName);
         }
+
+
+        $product = $products[$index];
 
         return $product;
     }
