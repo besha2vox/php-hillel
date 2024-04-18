@@ -4,6 +4,9 @@ namespace Exceptions;
 
 class CashierException extends \RuntimeException
 {
+    /**
+     * @param string $type 'money'|'order'
+     */
     public function __construct(string $type)
     {
         $msg = match($type) {
