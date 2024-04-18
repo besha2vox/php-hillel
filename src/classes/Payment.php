@@ -1,5 +1,9 @@
 <?php
 
+namespace Payment;
+
+use AutoWorkshop\Order;
+
 class Payment
 {
     private Order $order;

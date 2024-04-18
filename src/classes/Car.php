@@ -1,5 +1,7 @@
 <?php
 
+namespace Car;
+
 class Car
 {
     public function __construct(private string $brand, private string $model, private string|null $fault)

@@ -1,8 +1,21 @@
 <?php
 
+namespace AutoWorkshop;
+
+use Supplier\Product;
+use Payment\Payment;
+use CarOwner\CarOwner;
+
 class Cashier extends Worker
 {
     private bool $isOrderCreated = false;
+    protected string $position = 'cashier';
+
+    public function __construct(string $name, float $baseSalary, private float $bonus)
+    {
+        $this->bonus = $bonus;
+        parent::__construct($name, $baseSalary);
+    }
 
     public function createOrder(CarOwner $carOwner, Product $product, float $amount): Order
     {
@@ -25,5 +38,10 @@ class Cashier extends Worker
         $payment = new Payment($order);
         echo "Payment processed by cashier.\n";
         $payment->processPayment();
+    }
+
+    public function calculateSalary(): void
+    {
+        $this->salary = $this->baseSalary + $this->bonus;
     }
 }

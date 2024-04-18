@@ -1,5 +1,9 @@
 <?php
 
+namespace CarOwner;
+
+use \Car\Car;
+
 class CarOwner
 {
     public function __construct(private string $name, private float $balance, private Car $car)

@@ -1,5 +1,7 @@
 <?php
 
+namespace AutoWorkshop;
+
 class AutoWorkshop
 {
     private array $workers;

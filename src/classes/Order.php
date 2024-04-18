@@ -1,5 +1,10 @@
 <?php
 
+namespace AutoWorkshop;
+
+use CarOwner\CarOwner;
+use Car\Car;
+
 class Order
 {
     private float $totalPrice = 0;

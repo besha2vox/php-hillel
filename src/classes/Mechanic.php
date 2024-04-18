@@ -1,8 +1,19 @@
 <?php
 
+namespace AutoWorkshop;
+
+use Car\Car;
+
 class Mechanic extends Worker
 {
     private Car|null $car = null;
+    protected string $position = 'mechanic';
+
+    public function __construct(string $name, float $baseSalary, private float $coefficient)
+    {
+        $this->coefficient = $coefficient;
+        parent::__construct($name, $baseSalary);
+    }
 
     public function getCarForService(Car $car): void
     {
@@ -34,5 +45,10 @@ class Mechanic extends Worker
         if (!$this->car) {
             throw new Exception("No car in service\n");
         }
+    }
+
+    public function calculateSalary(): void
+    {
+        $this->salary = $this->baseSalary * $this->coefficient;
     }
 }

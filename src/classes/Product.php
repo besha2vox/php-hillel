@@ -1,5 +1,7 @@
 <?php
 
+namespace Supplier;
+
 class Product
 {
     private string $name;

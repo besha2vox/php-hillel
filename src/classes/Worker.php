@@ -1,16 +1,22 @@
 <?php
 
+namespace AutoWorkshop;
+
 abstract class Worker
 {
-    protected string $name;
+    protected string $position;
+    protected float $salary;
 
-    public function __construct(string $name)
+    public function __construct(protected string $name, protected float $baseSalary)
     {
         $this->name = $name;
+        $this->baseSalary = $baseSalary;
     }
 
-    public function getName(): string
+    public function greetings(): void
     {
-        return $this->name;
+        echo "Hello! My name is $this->name. I'm $this->position." ;
     }
+
+    abstract public function calculateSalary(): void;
 }
