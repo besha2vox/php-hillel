@@ -27,4 +27,12 @@ class AutoWorkshop
     {
         return $this->priceList[$fault];
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }

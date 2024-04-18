@@ -5,6 +5,7 @@ namespace AutoWorkshop;
 use Supplier\Product;
 use Payment\Payment;
 use CarOwner\CarOwner;
+use Exception;
 
 class Cashier extends Worker
 {

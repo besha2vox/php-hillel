@@ -3,6 +3,7 @@
 namespace AutoWorkshop;
 
 use Car\Car;
+use Exception;
 
 class Mechanic extends Worker
 {
@@ -19,6 +20,7 @@ class Mechanic extends Worker
     {
         $this->car = $car;
     }
+
 
     public function checkCar(): string|null
     {
