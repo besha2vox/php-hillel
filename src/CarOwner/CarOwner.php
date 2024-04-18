@@ -2,7 +2,7 @@
 
 namespace CarOwner;
 
-use \Car\Car;
+use Car\Car;
 
 class CarOwner
 {

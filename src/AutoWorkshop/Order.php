@@ -2,8 +2,8 @@
 
 namespace AutoWorkshop;
 
-use CarOwner\CarOwner;
 use Car\Car;
+use CarOwner\CarOwner;
 
 class Order
 {

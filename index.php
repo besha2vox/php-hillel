@@ -2,13 +2,16 @@
 
 require_once 'autoloader.php';
 
-use \AutoWorkshop\AutoWorkshop;
-use \AutoWorkshop\Mechanic;
-use \AutoWorkshop\Cashier;
-use \CarOwner\CarOwner;
-use \Car\Car;
-use \Supplier\Supplier;
-use \Supplier\Product;
+use AutoWorkshop\AutoWorkshop;
+use AutoWorkshop\Cashier;
+use AutoWorkshop\Mechanic;
+use Car\Car;
+use CarOwner\CarOwner;
+use Supplier\Product;
+use Supplier\Supplier;
+use Exceptions\NoCarInService;
+use Exceptions\CashierException;
+use Exceptions\SupplierException;
 
 try {
     $supplier = new Supplier("Auto Parts Supplier");
@@ -21,7 +24,7 @@ try {
     $priceList = ["Engine" => 200.0, "Tire" => 50.0];
     $autoWorkshop = new AutoWorkshop("Pimp my Ride", $priceList);
     $mechanic = new Mechanic("John", 400, 1.8);
-    $cashier = new Cashier("Alice",300, 450);
+    $cashier = new Cashier("Alice", 300, 450);
     $autoWorkshop->hireWorker($mechanic);
     $autoWorkshop->hireWorker($cashier);
 
@@ -40,11 +43,6 @@ try {
     $cashier->processPayment($order);
 
     $mechanic->repairCar();
-    try {
-        $mechanic->checkCar();
-    } catch (Exception $error) {
-        echo $error->getMessage();
-    }
 
     $mechanic->calculateSalary();
     $cashier->calculateSalary();
@@ -52,6 +50,10 @@ try {
     echo 'Salary of a ' . $cashier->getPosition() . ': ' . $cashier->getSalary() . "\n";
 
 
-} catch (Exception $error) {
+} catch (NoCarInService $error) {
+    echo $error->getMessage() . "\n";
+} catch (CashierException $error) {
+    echo $error->getMessage() . "\n";
+} catch (SupplierException $error) {
     echo $error->getMessage() . "\n";
 }

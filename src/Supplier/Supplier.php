@@ -2,6 +2,8 @@
 
 namespace Supplier;
 
+use Exceptions\SupplierException;
+
 class Supplier
 {
     private string $name;
@@ -31,6 +33,12 @@ class Supplier
     {
         $products = $this->getProducts();
         $index = array_search($productName, array_column($products, 'name'));
-        return $products[$index];
+        $product = $products[$index];
+
+        if(!$product) {
+            throw new SupplierException($productName);
+        }
+
+        return $product;
     }
 }
