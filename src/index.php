@@ -1,5 +1,7 @@
 <?php
 
+require_once 'autoloader.php';
+
 use \AutoWorkshop\AutoWorkshop;
 use \AutoWorkshop\Mechanic;
 use \AutoWorkshop\Cashier;
@@ -32,13 +34,23 @@ try {
 
     $product = $supplier->getProduct($fault);
     $amount = $product->getPrice() + $autoWorkshop->getPrice($fault);
-    $order = $cashier->createOrder($carOwner, $product, $amount);
 
     $cashier->greetings();
+    $order = $cashier->createOrder($carOwner, $product, $amount);
     $cashier->processPayment($order);
 
     $mechanic->repairCar();
-    $mechanic->checkCar();
+    try {
+        $mechanic->checkCar();
+    } catch (Exception $error) {
+        echo $error->getMessage();
+    }
+
+    $mechanic->calculateSalary();
+    $cashier->calculateSalary();
+    echo 'Salary of a ' . $mechanic->getPosition() . ': ' . $mechanic->getSalary() . "\n";
+    echo 'Salary of a ' . $cashier->getPosition() . ': ' . $cashier->getSalary() . "\n";
+
 
 } catch (Exception $error) {
     echo $error->getMessage() . "\n";

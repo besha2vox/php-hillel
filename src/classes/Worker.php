@@ -15,8 +15,18 @@ abstract class Worker
 
     public function greetings(): void
     {
-        echo "Hello! My name is $this->name. I'm $this->position." ;
+        echo "Hello! My name is $this->name. I'm $this->getPosition().";
     }
 
     abstract public function calculateSalary(): void;
+
+    public function getSalary(): float
+    {
+        return $this->salary;
+    }
+
+    public function getPosition(): string
+    {
+        return $this->position;
+    }
 }
