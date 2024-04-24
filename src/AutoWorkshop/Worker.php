@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AutoWorkshop;
 
 abstract class Worker
@@ -18,8 +20,6 @@ abstract class Worker
         echo sprintf("Hello! My name is %s. I'm %s", $this->name, $this->getPosition() . PHP_EOL);
     }
 
-    abstract public function calculateSalary(): void;
-
     public function getSalary(): float
     {
         return $this->salary;
@@ -29,4 +29,6 @@ abstract class Worker
     {
         return $this->position;
     }
+
+    abstract public function calculateSalary(): void;
 }
