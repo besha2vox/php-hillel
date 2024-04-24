@@ -1,6 +1,6 @@
 <?php
 
-require_once 'autoloader.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use AutoWorkshop\AutoWorkshop;
 use AutoWorkshop\Cashier;
