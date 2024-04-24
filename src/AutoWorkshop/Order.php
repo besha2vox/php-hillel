@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AutoWorkshop;
 
-use CarOwner\CarOwner;
 use Car\Car;
+use CarOwner\CarOwner;
 
 class Order
 {

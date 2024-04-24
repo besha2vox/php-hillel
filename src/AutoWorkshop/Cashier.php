@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace AutoWorkshop;
 
-use Supplier\Product;
-use Payment\Payment;
 use CarOwner\CarOwner;
-use Exception;
+use Exceptions\CashierException;
+use Payment\Payment;
+use Supplier\Product;
 
 class Cashier extends Worker
 {
@@ -23,7 +23,7 @@ class Cashier extends Worker
     public function createOrder(CarOwner $carOwner, Product $product, float $amount): Order
     {
         if ($carOwner->getBalance() < $amount) {
-            throw new Exception("Not enough money\n");
+            throw new CashierException("money");
         }
 
         $order = new Order($carOwner, [$product], $amount);
@@ -36,7 +36,7 @@ class Cashier extends Worker
     public function processPayment(Order $order): void
     {
         if (!$this->isOrderCreated) {
-            throw new Exception("Order has not been created\n");
+            throw new CashierException('order');
         }
         $payment = new Payment($order);
         echo "Payment processed by cashier.\n";

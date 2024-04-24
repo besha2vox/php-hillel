@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace AutoWorkshop;
 
 use Car\Car;
-use Exception;
+use Exceptions\NoCarInService;
 
 class Mechanic extends Worker
 {
@@ -30,7 +30,7 @@ class Mechanic extends Worker
         $fault = $this->car->getFault();
 
         if (!$fault) {
-            throw new Exception("No faults detected!\n");
+            throw new NoCarInService("No faults detected!\n");
         }
 
         echo "A defective part has been detected: $fault \n";
@@ -47,7 +47,7 @@ class Mechanic extends Worker
     private function checkCarInService(): void
     {
         if (!$this->car) {
-            throw new Exception("No car in service\n");
+            throw new NoCarInService();
         }
     }
 
