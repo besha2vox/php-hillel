@@ -1,6 +1,12 @@
 {
     "name": "hillel/auto_workshop",
     "description": "auto_workshop",
+    "authors": [
+        {
+            "name": "Serhii Revva",
+            "email": "besha2vox@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "AutoWorkshop\\": "src/AutoWorkshop",
@@ -8,15 +14,10 @@
             "CarOwner\\": "src/CarOwner",
             "Exceptions\\": "src/Exceptions",
             "Payment\\": "src/Payment",
-            "Suplier\\": "src/Suplier"
+            "Supplier\\": "src/Supplier",
+            "ConsoleMessenger\\": "src/ConsoleMessenger"
         }
     },
-    "authors": [
-        {
-            "name": "Serhii Revva",
-            "email": "besha2vox@gmail.com"
-        }
-    ],
     "require": {
         "symfony/console": "^7.0"
     }

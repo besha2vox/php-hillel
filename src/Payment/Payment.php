@@ -17,15 +17,17 @@ class Payment
 
     public function processPayment(): void
     {
+        global $console;
         $carOwner = $this->order->getCarOwner();
         $totalPrice = $this->order->getTotalPrice();
         $carOwner->deductBalance($totalPrice);
-        echo "Payment successful.\n";
+        $console->printInfo("Payment successful.");
         $this->generateReceipt();
     }
 
     private function generateReceipt(): void
     {
+        global $console;
         $carOwner = $this->order->getCarOwner();
         $car = $this->order->getCar();
         $products = $this->order->getProducts();
@@ -44,6 +46,6 @@ class Payment
         $receipt .= "Balance Before Payment: {$balanceBeforePayment}$\n";
         $receipt .= "Balance After Payment: {$balanceAfterPayment}$\n";
 
-        echo $receipt;
+        $console->printInfo($receipt);
     }
 }

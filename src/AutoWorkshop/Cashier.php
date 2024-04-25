@@ -22,24 +22,26 @@ class Cashier extends Worker
 
     public function createOrder(CarOwner $carOwner, Product $product, float $amount): Order
     {
+        global $console;
         if ($carOwner->getBalance() < $amount) {
             throw new CashierException("money");
         }
 
         $order = new Order($carOwner, [$product], $amount);
         $this->isOrderCreated = true;
-        echo "Order created\n";
+        $console->printInfo("Order created");
 
         return $order;
     }
 
     public function processPayment(Order $order): void
     {
+        global $console;
         if (!$this->isOrderCreated) {
             throw new CashierException('order');
         }
         $payment = new Payment($order);
-        echo "Payment processed by cashier.\n";
+        $console->printInfo("Payment processed by cashier.");
         $payment->processPayment();
     }
 
