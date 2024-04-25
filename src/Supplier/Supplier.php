@@ -46,8 +46,6 @@ class Supplier
         }
 
 
-        $product = $products[$index];
-
-        return $product;
+        return $products[$index];
     }
 }

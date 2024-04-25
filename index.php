@@ -1,6 +1,8 @@
 <?php
 
-require_once 'autoloader.php';
+global $console;
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/utils/console.php';
 
 use AutoWorkshop\AutoWorkshop;
 use AutoWorkshop\Cashier;
@@ -46,16 +48,14 @@ try {
 
     $mechanic->calculateSalary();
     $cashier->calculateSalary();
-    echo 'Salary of a ' . $mechanic->getPosition() . ': ' . $mechanic->getSalary() . "\n";
-    echo 'Salary of a ' . $cashier->getPosition() . ': ' . $cashier->getSalary() . "\n";
-
-
+    $console->printInfo('Salary of a ' . $mechanic->getPosition() . ': ' . $mechanic->getSalary());
+    $console->printInfo('Salary of a ' . $cashier->getPosition() . ': ' . $cashier->getSalary());
 } catch (NoCarInService $error) {
-    echo $error->getMessage() . "\n";
+    $console->printError($error->getMessage());
 } catch (CashierException $error) {
-    echo $error->getMessage() . "\n";
+    $console->printError($error->getMessage());
 } catch (SupplierException $error) {
-    echo $error->getMessage() . "\n";
+    $console->printError($error->getMessage());
 } catch (TypeError $error) {
-    echo $error->getMessage() . "\n";
+    $console->printError($error->getMessage());
 }

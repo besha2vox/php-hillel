@@ -26,6 +26,7 @@ class Mechanic extends Worker
 
     public function checkCar(): string|null
     {
+        global $console;
         $this->checkCarInService();
         $fault = $this->car->getFault();
 
@@ -33,15 +34,16 @@ class Mechanic extends Worker
             throw new NoCarInService("No faults detected!\n");
         }
 
-        echo "A defective part has been detected: $fault \n";
+        $console->printInfo("A defective part has been detected: $fault");
         return $this->car->getFault();
     }
 
     public function repairCar(): void
     {
+        global $console;
         $this->checkCarInService();
         $this->car->setFault(null);
-        echo "The car is fixed.\n";
+        $console->printInfo("The car is fixed.");
     }
 
     private function checkCarInService(): void

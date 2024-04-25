@@ -17,7 +17,8 @@ abstract class Worker
 
     public function greetings(): void
     {
-        echo sprintf("Hello! My name is %s. I'm %s", $this->name, $this->getPosition() . PHP_EOL);
+        global $console;
+        $console->printInfo(sprintf("Hello! My name is %s. I'm %s", $this->name, $this->getPosition()));
     }
 
     public function getSalary(): float
